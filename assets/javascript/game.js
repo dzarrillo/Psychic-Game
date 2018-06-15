@@ -16,17 +16,18 @@ function randomLetter(){
    return alphabet.charAt(Math.floor(Math.random() * alphabet.length));
 }
 
+var ranLetter = randomLetter();
 console.log("Alphabet " + randomLetter());
 
 document.onkeyup = function (event) {
     if(guessesLeft > 1) {
         var letter = event.key.toUpperCase();  
-        var ranLetter = "A" //randomLetter();
-   
+        // var ranLetter = randomLetter();
+        console.log(" new letter " + ranLetter);
         // Use regex to check for alphanumeric values
         if (/^[A-Z]/.test(letter)) {
             messageLabel.style.display = "none"   
-            console.log("hide " + letter);
+            // console.log("hide " + letter);
             // code
         
             if(letter === ranLetter) {
@@ -34,6 +35,8 @@ document.onkeyup = function (event) {
                 guessesLeft = 9;
                 guessesleftLabel.innerText = guessesLeft;
                 yourGuesses = "";
+                ranLetter = randomLetter();
+                console.log(" new letter " + ranLetter);
             } else {
                 guessesLeft -= 1;
                 yourguessesLabel.innerText = "";
@@ -42,7 +45,7 @@ document.onkeyup = function (event) {
                     
          } else {
             messageLabel.style.display = "block"
-            console.log("block" + letter);
+            // console.log("block" + letter);
          }
 
         
